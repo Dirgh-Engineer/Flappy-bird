@@ -5,6 +5,7 @@
 #include "Weather.h"
 #include "GameConfig.h"
 #include "Menu.h"
+#include "ParticleSystem.h"
 #include <vector>
 
 const char* GAME_TITLE = "Flappy Bird";
@@ -21,6 +22,7 @@ int main() {
     Weather weather;
     Menu menu;
     menu.Load();
+    ParticleSystem particleSystem;
 
     GameState gameState = GameState::MENU;
     std::vector<Pipe> pipes;
@@ -50,8 +52,8 @@ int main() {
                 background.Update();
                 weather.Update();
                 bird.Update();
+                particleSystem.Update();
 
-                // Hell mode transition check
                 if (score == 10) {
                     hellModeActivated = true;
                 }
@@ -65,8 +67,10 @@ int main() {
                 for (auto& pipe : pipes) {
                     pipe.Update();
                     if (pipe.CheckCollision(bird.GetCollisionBox())) {
+                        particleSystem.EmitCrashParticles({ bird.GetX(), bird.GetY() });
                         gameOver = true;
                     }
+
                     if (!pipe.HasPassed() && pipe.GetX() < bird.GetX()) {
                         score++;
                         pipe.SetPassed(true);
@@ -95,9 +99,10 @@ int main() {
                 pipe.Draw();
             }
             bird.Draw();
+            particleSystem.Draw();
+
             DrawText(TextFormat("Score: %d", score), 10, 10, 20, BLACK);
 
-            // Hell mode indicator
             if (hellModeActivated) {
                 DrawText("HELL MODE ACTIVE", SCREEN_WIDTH / 2 - 100, 40, 30, RED);
             }

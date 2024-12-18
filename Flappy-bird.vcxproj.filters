@@ -53,16 +53,13 @@
     <Image Include="Assets\sprites\pipe.png">
       <Filter>assets\sprites</Filter>
     </Image>
-    <Image Include="Assets\sprites\flat-design-animation-frames-element-collection\bird_sprites.jpg">
-      <Filter>assets\sprites</Filter>
-    </Image>
-    <Image Include="Assets\sprites\flat-design-animation-frames-element-collection\bird_sprites.png">
-      <Filter>assets\sprites</Filter>
-    </Image>
     <Image Include="Assets\sprites\background.png">
       <Filter>assets\sprites</Filter>
     </Image>
     <Image Include="Assets\sprites\Hell.png">
+      <Filter>assets\sprites</Filter>
+    </Image>
+    <Image Include="Assets\sprites\bird_sprites.png">
       <Filter>assets\sprites</Filter>
     </Image>
   </ItemGroup>

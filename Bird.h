@@ -11,10 +11,10 @@ private:
     Rectangle bounds;
     Rectangle collisionBox;
     Texture2D texture;
-    float frameTime;
-    float currentFrame;
-    int totalFrames;
     Rectangle frameRec;
+    float frameTime;
+    int currentFrame;
+    int totalFrames;
 
 public:
     Bird();
@@ -24,7 +24,6 @@ public:
     void Draw();
     void Jump();
     Rectangle GetCollisionBox() const { return collisionBox; }
-    float GetVelocity() const { return velocity; }
     float GetX() const { return position.x; }
-    void ApplyWind(float force);
+    float GetY() const { return position.y; }
 };

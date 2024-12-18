@@ -16,11 +16,14 @@ Bird::~Bird() {
 }
 
 void Bird::Load() {
-    texture = LoadTexture("assets/sprites/bird_sprites.png");
+    Image birdImage = LoadImage("assets/sprites/bird_sprites.png");
+    ImageColorReplace(&birdImage, WHITE, BLANK);
+    texture = LoadTextureFromImage(birdImage);
+    UnloadImage(birdImage);
     frameRec.width = (float)texture.width / 3;
     frameRec.height = (float)texture.height / 2;
-    bounds.width = frameRec.width * 0.06f;
-    bounds.height = frameRec.height * 0.06f;
+    bounds.width = frameRec.width * 0.03f;
+    bounds.height = frameRec.height * 0.03f;
 }
 
 void Bird::Update() {
@@ -37,17 +40,21 @@ void Bird::Update() {
         velocity = 0;
     }
 
-    bounds.x = position.x;
-    bounds.y = position.y;
+    // Calculate sprite frame dimensions with adjusted scale
+    float scale = 0.02f;
+    int frameIndex = (int)currentFrame;
+    int row = frameIndex / 3;
+    int col = frameIndex % 3;
 
-    // Tighter collision box
-    float collisionMarginX = bounds.width * 0.3f;  // 30% margin from sides
-    float collisionMarginY = bounds.height * 0.25f; // 25% margin from top/bottom
+    float spriteWidth = frameRec.width * scale * 0.8f;
+    float spriteHeight = frameRec.height * scale * 0.8f;
+
+    // Center the collision box with adjusted dimensions
     collisionBox = {
-        position.x + collisionMarginX,
-        position.y + collisionMarginY,
-        bounds.width - (collisionMarginX * 2),
-        bounds.height - (collisionMarginY * 2)
+        position.x - spriteWidth / 1,
+        position.y - spriteHeight / 1,
+        spriteWidth,
+        spriteHeight
     };
 
     if (IsKeyPressed(KEY_SPACE) || IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
@@ -76,7 +83,7 @@ void Bird::Update() {
 }
 
 void Bird::Draw() {
-    float scale = 0.06f;
+    float scale = 0.02f;
     int frameIndex = (int)currentFrame;
     int row = frameIndex / 3;
     int col = frameIndex % 3;
@@ -89,8 +96,8 @@ void Bird::Draw() {
     };
 
     Rectangle dest = {
-        position.x,
-        position.y,
+        position.x - (frameRec.width * scale / 2),
+        position.y - (frameRec.height * scale / 2),
         frameRec.width * scale,
         frameRec.height * scale
     };
@@ -102,8 +109,7 @@ void Bird::Draw() {
     Vector2 origin = { dest.width / 2, dest.height / 2 };
     DrawTexturePro(texture, source, dest, origin, rotation, WHITE);
 
-    // Uncomment to debug collision box
-    // DrawRectangleLines(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height, RED);
+    
 }
 
 void Bird::Jump() {

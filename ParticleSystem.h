@@ -11,10 +11,12 @@ private:
         float life;
         Color color;
         bool active;
+        float rotation;
+        float rotationSpeed;
     };
 
     std::vector<Particle> particles;
-    const int MAX_PARTICLES = 100;
+    const int MAX_PARTICLES = 200;  // Increased particle count
 
 public:
     ParticleSystem();

@@ -141,8 +141,7 @@
   <ItemGroup>
     <Image Include="Assets\sprites\background.png" />
     <Image Include="Assets\sprites\bird.png" />
-    <Image Include="Assets\sprites\flat-design-animation-frames-element-collection\bird_sprites.jpg" />
-    <Image Include="Assets\sprites\flat-design-animation-frames-element-collection\bird_sprites.png" />
+    <Image Include="Assets\sprites\bird_sprites.png" />
     <Image Include="Assets\sprites\Hell.png" />
     <Image Include="Assets\sprites\pipe.png" />
   </ItemGroup>

@@ -48,7 +48,6 @@ void Pipe::Draw() const {
     float lipHeight = 35;
     float cornerRadius = 8.0f;
 
-    // Top pipe
     DrawRectangle(topPipe.x, topPipe.y, topPipe.width, topPipe.height, mainColor);
     DrawRectangle(topPipe.x + 8, topPipe.y, 15, topPipe.height, highlightColor);
     DrawRectangle(topPipe.x + 12, topPipe.y, 5, topPipe.height, metalShine);
@@ -56,7 +55,6 @@ void Pipe::Draw() const {
     DrawRectangleRounded({ topPipe.x - 12, topPipe.height - lipHeight, lipWidth, lipHeight }, cornerRadius, 8, edgeColor);
     DrawRectangleRounded({ topPipe.x - 10, topPipe.height - lipHeight + 3, lipWidth - 4, 6 }, cornerRadius / 2, 8, metalShine);
 
-    // Bottom pipe with matching effects
     DrawRectangle(bottomPipe.x, bottomPipe.y, bottomPipe.width, bottomPipe.height, mainColor);
     DrawRectangle(bottomPipe.x + 8, bottomPipe.y, 15, bottomPipe.height, highlightColor);
     DrawRectangle(bottomPipe.x + 12, bottomPipe.y, 5, bottomPipe.height, metalShine);
@@ -64,37 +62,36 @@ void Pipe::Draw() const {
     DrawRectangleRounded({ bottomPipe.x - 12, bottomPipe.y, lipWidth, lipHeight }, cornerRadius, 8, edgeColor);
     DrawRectangleRounded({ bottomPipe.x - 10, bottomPipe.y + 3, lipWidth - 4, 6 }, cornerRadius / 2, 8, metalShine);
 
-    // Shadow effects for both pipes
     DrawRectangleGradientV(topPipe.x + topPipe.width - 15, topPipe.y, 15, topPipe.height, shadowColor, deepShadow);
     DrawRectangleGradientV(bottomPipe.x + bottomPipe.width - 15, bottomPipe.y, 15, bottomPipe.height, shadowColor, deepShadow);
 }
 
 bool Pipe::CheckCollision(Rectangle birdBounds) const {
     Rectangle topPipeCollision = {
-        topPipe.x - 2,          // Reduced from -5 to -2
+        topPipe.x + 8,
         topPipe.y,
-        topPipe.width + 4,      // Reduced from +10 to +4
+        topPipe.width - 16,
         topPipe.height
     };
 
     Rectangle topLipCollision = {
-        topPipe.x - 12,
+        topPipe.x + 4,
         topPipe.height - 35,
-        topPipe.width + 24,
+        topPipe.width - 8,
         35
     };
 
     Rectangle bottomPipeCollision = {
-        bottomPipe.x - 2,       // Reduced from -5 to -2
+        bottomPipe.x + 8,
         bottomPipe.y + 35,
-        bottomPipe.width + 4,   // Reduced from +10 to +4
+        bottomPipe.width - 16,
         bottomPipe.height - 35
     };
 
     Rectangle bottomLipCollision = {
-        bottomPipe.x - 12,
+        bottomPipe.x + 4,
         bottomPipe.y,
-        bottomPipe.width + 24,
+        bottomPipe.width - 8,
         35
     };
 
@@ -121,9 +118,7 @@ float Pipe::GetX() const {
 }
 
 void Pipe::LoadPipeTexture() {
-    // Empty implementation for shape-based pipes
 }
 
 void Pipe::UnloadPipeTexture() {
-    // Empty implementation for shape-based pipes
 }

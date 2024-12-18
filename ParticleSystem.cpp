@@ -8,30 +8,23 @@ ParticleSystem::ParticleSystem() {
 }
 
 void ParticleSystem::EmitCrashParticles(Vector2 position) {
-    const Color colors[] = {
-        RED,
-        ORANGE,
-        GOLD,
-        MAROON
-    };
+    const Color colors[] = { RED, MAROON, RED, RED };
 
-    for (int i = 0; i < 50; i++) {  // Emit more particles at once
+    for (int i = 0; i < 60; i++) {
         for (auto& particle : particles) {
             if (!particle.active) {
-                float angle = GetRandomValue(0, 360) * DEG2RAD;
-                float speed = GetRandomValue(200, 400) / 60.0f;
+                float angle = GetRandomValue(-180, 180) * DEG2RAD; // Full 360-degree spread
+                float speed = GetRandomValue(200, 600) / 30.0f; // Much faster speed
 
                 particle.position = position;
                 particle.velocity = {
-                    cosf(angle) * speed,
-                    sinf(angle) * speed
+                    cosf(angle) * speed * 2.0f, // Doubled horizontal speed
+                    sinf(angle) * speed * 2.0f  // Doubled vertical speed
                 };
-                particle.size = GetRandomValue(5, 12);
-                particle.life = 1.0f;
+                particle.size = GetRandomValue(3, 8);
+                particle.life = GetRandomValue(60, 120) / 100.0f; // Longer life
                 particle.color = colors[GetRandomValue(0, 3)];
                 particle.active = true;
-                particle.rotation = GetRandomValue(0, 360);
-                particle.rotationSpeed = GetRandomValue(-10, 10);
                 break;
             }
         }
@@ -44,13 +37,13 @@ void ParticleSystem::Update() {
             particle.position.x += particle.velocity.x;
             particle.position.y += particle.velocity.y;
 
-            // Add gravity and air resistance
-            particle.velocity.y += 0.3f;
-            particle.velocity.x *= 0.98f;
-            particle.velocity.y *= 0.98f;
+            // Stronger gravity for blood-like falling effect
+            particle.velocity.y += 0.8f;
 
-            particle.rotation += particle.rotationSpeed;
-            particle.life -= 0.016f;  // Slower fade out
+            // Slight air resistance
+            particle.velocity.x *= 0.98f;
+
+            particle.life -= 0.016f;
 
             if (particle.life <= 0) {
                 particle.active = false;
@@ -65,22 +58,14 @@ void ParticleSystem::Draw() {
             Color color = particle.color;
             color.a = (unsigned char)(255.0f * particle.life);
 
-            // Draw particle with rotation
-            Vector2 center = particle.position;
-            float radius = particle.size;
-
-            // Draw main particle
-            DrawCircleV(center, radius, color);
-
-            // Draw particle trail
+            // Draw elongated blood particles
             Vector2 trailEnd = {
-                center.x - particle.velocity.x * 0.5f,
-                center.y - particle.velocity.y * 0.5f
+                particle.position.x - particle.velocity.x * 0.3f,
+                particle.position.y - particle.velocity.y * 0.3f
             };
 
-            Color trailColor = color;
-            trailColor.a = (unsigned char)(127.0f * particle.life);
-            DrawLineEx(center, trailEnd, radius * 0.5f, trailColor);
+            DrawLineEx(particle.position, trailEnd, particle.size, color);
+            DrawCircleV(particle.position, particle.size * 0.8f, color);
         }
     }
 }

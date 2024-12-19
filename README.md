@@ -33,7 +33,7 @@ Flappy Bird is a modern reimagining of the beloved classic game that captivated 
 
 The game is designed with a polished menu system, ensuring seamless navigation and ease of use for players of all skill levels. Its customizable gameplay allows developers and enthusiasts to expand its features effortlessly, making it an excellent choice for both casual gaming and coding practice. Whether you're reliving the classic or exploring its new challenges, this iteration of Flappy Bird promises hours of engaging gameplay.
 
-![video alt] (
+![video alt](https://github.com/Dirgh-Engineer/Flappy-bird/blob/407536644478be609c9940c6c63ae6b875bbbecf/Normal.gif)
 
 [🎯 Go to Table of Contents](#table-of-contents) | [Next: Features](#features)
 

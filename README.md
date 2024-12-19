@@ -133,6 +133,7 @@ Manages the visual backdrop of the game.
 
 - **Day-Night Cycle:** Adjusts overlay color based on the time of day.
 - **Hell Mode Background:** Adds glowing effects when Hell Mode is active.
+![video alt](https://github.com/Dirgh-Engineer/Flappy-bird/blob/6525b69e52ec229fae941af59c02630df50ddda2/Hell.gif)
 - **Seamless Scrolling:** Ensures smooth background transitions.
 
 ### Weather.cpp

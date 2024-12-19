@@ -2,6 +2,8 @@
 
 A modern take on the classic Flappy Bird game, built using Raylib. The game features dynamic weather effects, a challenging Hell Mode, and a polished menu system for seamless navigation.
 
+![image alt](https://github.com/Dirgh-Engineer/Flappy-bird/blob/e8f609a9f2675cc8570730f9b159d0b6d7cb91a9/menu.png)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -30,6 +32,8 @@ A modern take on the classic Flappy Bird game, built using Raylib. The game feat
 Flappy Bird is a modern reimagining of the beloved classic game that captivated millions worldwide. This version is built using Raylib, a lightweight yet powerful graphics library, and brings a host of new features designed to enhance the player experience. With dynamic weather effects that create a visually immersive environment, a challenging Hell Mode for seasoned players, and smooth animations, this game delivers both nostalgia and novelty. 
 
 The game is designed with a polished menu system, ensuring seamless navigation and ease of use for players of all skill levels. Its customizable gameplay allows developers and enthusiasts to expand its features effortlessly, making it an excellent choice for both casual gaming and coding practice. Whether you're reliving the classic or exploring its new challenges, this iteration of Flappy Bird promises hours of engaging gameplay.
+
+![video alt] (
 
 [🎯 Go to Table of Contents](#table-of-contents) | [Next: Features](#features)
 

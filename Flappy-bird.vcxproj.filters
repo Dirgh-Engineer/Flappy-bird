@@ -56,10 +56,10 @@
     <Image Include="Assets\sprites\background.png">
       <Filter>assets\sprites</Filter>
     </Image>
-    <Image Include="Assets\sprites\Hell.png">
+    <Image Include="Assets\sprites\bird_sprites.png">
       <Filter>assets\sprites</Filter>
     </Image>
-    <Image Include="Assets\sprites\bird_sprites.png">
+    <Image Include="Assets\sprites\Hell.png">
       <Filter>assets\sprites</Filter>
     </Image>
   </ItemGroup>

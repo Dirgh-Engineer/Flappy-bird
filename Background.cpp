@@ -16,8 +16,7 @@ Background::~Background() {
 
 void Background::Load() {
     texture = LoadTexture("assets/sprites/background.png");
-    hellBackground = LoadTexture("assets/backgrounds/Hell.png");
-    DrawText(TextFormat("Hell Texture ID: %d", hellBackground.id), 10, 30, 20, RED);
+    hellBackground = LoadTexture("assets/sprites/Hell.png");
 }
 
 void Background::Update() {
@@ -53,7 +52,6 @@ void Background::Draw() {
             0,
             WHITE
         );
-
         float time = (float)GetTime();
         Color glowColor = { 255, 50, 0, (unsigned char)(127 + sin(time) * 127) };
         DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, ColorAlpha(glowColor, 0.3f));
@@ -61,11 +59,9 @@ void Background::Draw() {
     else {
         float scaleX = (float)SCREEN_WIDTH / texture.width;
         float scaleY = (float)SCREEN_HEIGHT / texture.height;
-
         Rectangle source = { 0, 0, (float)texture.width, (float)texture.height };
         Rectangle dest = { position.x, position.y, SCREEN_WIDTH, SCREEN_HEIGHT };
         DrawTexturePro(texture, source, dest, Vector2{ 0, 0 }, 0, overlayColor);
-
         Rectangle dest2 = { position.x + SCREEN_WIDTH, position.y, SCREEN_WIDTH, SCREEN_HEIGHT };
         DrawTexturePro(texture, source, dest2, Vector2{ 0, 0 }, 0, overlayColor);
     }

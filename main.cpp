@@ -42,6 +42,8 @@ int main() {
                 score = 0;
                 gameOver = false;
                 hellModeActivated = false;
+                background.SetHellMode(false);
+                Pipe::SetHellMode(false);
                 bird = Bird();
                 bird.Load();
             }
@@ -54,8 +56,10 @@ int main() {
                 bird.Update();
                 particleSystem.Update();
 
-                if (score == 10) {
+                if (score >= 10) {
                     hellModeActivated = true;
+                    background.SetHellMode(true);
+                    Pipe::SetHellMode(true);
                 }
 
                 pipeSpawnTimer += GetFrameTime();
@@ -123,6 +127,8 @@ int main() {
                 score = 0;
                 gameOver = false;
                 hellModeActivated = false;
+                background.SetHellMode(false);
+                Pipe::SetHellMode(false);
                 bird = Bird();
                 bird.Load();
                 pipeSpawnTimer = 0;
@@ -130,6 +136,8 @@ int main() {
             else if (IsKeyPressed(KEY_M)) {
                 gameState = GameState::MENU;
                 gameOver = false;
+                background.SetHellMode(false);
+                Pipe::SetHellMode(false);
             }
         }
     }

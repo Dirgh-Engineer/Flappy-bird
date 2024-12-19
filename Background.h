@@ -10,7 +10,6 @@ private:
     float timeOfDay;
     Color overlayColor;
     float scrollingSpeed;
-    Texture2D normalBackground;
     Texture2D hellBackground;
     bool isHellMode;
 

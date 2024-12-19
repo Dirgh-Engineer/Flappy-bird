@@ -8,15 +8,15 @@ private:
     Rectangle bottomPipe;
     bool passed;
     float speed;
-    bool isHellMode;
+    static bool isHellMode;  // Make it static
     float flameTimer;
     Vector2 flamePosition;
     bool isEmittingFlame;
+    void DrawFlameParticle(Vector2 position, float speed);
 
 public:
-public:
     Pipe(float xPos);
-    ~Pipe();  // Add this line
+    ~Pipe();
     void Update();
     void Draw() const;
     bool CheckCollision(Rectangle birdBounds) const;
@@ -24,10 +24,8 @@ public:
     bool HasPassed() const;
     void SetPassed(bool value);
     float GetX() const;
-    void SetHellMode(bool mode);
+    static void SetHellMode(bool mode) { isHellMode = mode; }  // Static function
     void UpdateFlames();
     static void LoadPipeTexture();
     static void UnloadPipeTexture();
 };
-
-
